@@ -1,7 +1,7 @@
 <?php
 
 //Abstract away website location for portability
-$directory = rtrim($_SERVER['PHP_SELF'], '/index.php');
+$directory = preg_replace('/\/index\.php$/', '', $_SERVER['PHP_SELF']);
 $request = $_SERVER['REQUEST_URI'];
 $request = preg_replace('/^' . preg_quote($directory, '/') . '/', '', $request);
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') ? 'https' : 'http' ;
